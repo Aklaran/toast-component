@@ -16,21 +16,7 @@ function ToastPlayground() {
   const [message, setMessage] = React.useState("Write yo message here");
   const [variant, setVariant] = React.useState("notice");
 
-  const { addToast, dismissAllToasts } = React.useContext(ToastContext);
-
-  React.useEffect(() => {
-    function handleKeyDown(event) {
-      if (event.code === "Escape") {
-        dismissAllToasts();
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  const { addToast } = React.useContext(ToastContext);
 
   function handleSubmit(event) {
     event.preventDefault();

@@ -9,7 +9,12 @@ function ToastShelf() {
   const { activeToasts, removeToast } = React.useContext(ToastContext);
 
   return (
-    <ol className={styles.wrapper}>
+    <ol
+      className={styles.wrapper}
+      role="region"
+      aria-live="polite"
+      aira-label="Notification"
+    >
       {activeToasts.map(({ id, message, variant }) => (
         <li key={id} className={styles.toastWrapper}>
           <Toast id={id} message={message} variant={variant}>

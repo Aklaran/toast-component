@@ -5,9 +5,7 @@ function useKeyDown(keyCode, callback) {
 
   React.useEffect(() => {
     function handleKeyDown(event) {
-      console.log("hkd");
       if (event.code === keyCode) {
-        console.log("in keycode");
         callback();
       }
     }

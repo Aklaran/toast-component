@@ -6,7 +6,7 @@ export const ToastContext = React.createContext();
 function ToastProvider({ children }) {
   const [activeToasts, setActiveToasts] = React.useState([]);
 
-  useKeyDown("Escape", dismissAllToasts);
+  useKeyDown("Escape", () => setActiveToasts([]));
 
   function addToast(message, variant) {
     const toast = {
@@ -21,10 +21,6 @@ function ToastProvider({ children }) {
   function removeToast(id) {
     const index = activeToasts.findIndex((toast) => toast.id === id);
     setActiveToasts(activeToasts.toSpliced(index, 1));
-  }
-
-  function dismissAllToasts() {
-    setActiveToasts([]);
   }
 
   return (

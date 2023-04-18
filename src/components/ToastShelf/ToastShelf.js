@@ -3,21 +3,16 @@ import React from "react";
 import Toast from "../Toast";
 import styles from "./ToastShelf.module.css";
 
-function ToastShelf({ toasts, setToasts }) {
-  function removeToast(id) {
-    const index = toasts.findIndex((toast) => toast.id === id);
-    setToasts(toasts.toSpliced(index, 1));
-  }
+import { ToastContext } from "../ToastProvider/ToastProvider";
+
+function ToastShelf() {
+  const { activeToasts, removeToast } = React.useContext(ToastContext);
 
   return (
     <ol className={styles.wrapper}>
-      {toasts.map(({ id, message, variant }) => (
+      {activeToasts.map(({ id, message, variant }) => (
         <li key={id} className={styles.toastWrapper}>
-          <Toast
-            handleClose={() => removeToast(id)}
-            message={message}
-            variant={variant}
-          >
+          <Toast id={id} message={message} variant={variant}>
             Example notice toast
           </Toast>
         </li>

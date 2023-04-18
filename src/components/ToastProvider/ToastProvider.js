@@ -20,8 +20,14 @@ function ToastProvider({ children }) {
     setActiveToasts(activeToasts.toSpliced(index, 1));
   }
 
+  function dismissAllToasts() {
+    setActiveToasts([]);
+  }
+
   return (
-    <ToastContext.Provider value={{ activeToasts, addToast, removeToast }}>
+    <ToastContext.Provider
+      value={{ activeToasts, addToast, removeToast, dismissAllToasts }}
+    >
       {children}
     </ToastContext.Provider>
   );
